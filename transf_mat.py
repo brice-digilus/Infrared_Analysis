@@ -264,7 +264,7 @@ def compute_pixel_mat(cubemap_data,sensor_data, debug = False):
     #So we normalize the cubemap coordinates
     hcubnorm = (hcub - cubemap_data["HNPIX"]/2. + 0.5)/(cubemap_data["HNPIX"]/2.)
     vcubnorm = (vcub - cubemap_data["VNPIX"]/2. + 0.5)/(cubemap_data["VNPIX"]/2.)
-    #using tensordot, found the right axes = 1 bi trying, not thinkin !!!
+    #using tensordot, found the right axes = 1 by trying, not thinking !!!
     #https://docs.scipy.org/doc/numpy/reference/generated/numpy.tensordot.html#numpy.tensordot
     #basically what does this do is multiply the matrix M by each coordinate vector
     vout = np.tensordot(M,[hcubnorm,vcubnorm,np.ones(vcubnorm.shape)],axes = 1)
@@ -396,6 +396,7 @@ def compute_dist_weight_map(HPIX,VPIX):
 
     (xx,yy)= np.meshgrid(range(HPIX),range(VPIX))
     dist = np.min((np.min((xx,HPIX-1-xx),axis = 0),np.min((yy,VPIX-1-yy),axis = 0)),axis = 0)+1
+    
     return dist
 
 
