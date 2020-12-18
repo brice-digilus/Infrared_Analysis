@@ -1,0 +1,2 @@
+# ==== Angles for angles.txt 1 point front for v01 =========
+-45.00  0.00
